@@ -1,0 +1,38 @@
+:root {
+    --primary-color: #57CC99;
+    --secondary-color: #38A3A5;
+    --light-accent: #80ED99;
+    --dark-accent: #22577A;
+    --white: #F5F7F6;
+    --black: #303B3D;
+}
+
+* {
+    font-family: Montserrat, sans-serif;
+    color: var(--black);
+}
+
+.navbar {
+    padding-left: 1vw !important;
+}
+
+.navbar-nav {
+    padding-right: 1vw !important;
+    font-weight: 500;
+}
+
+.navbar-nav li {
+    margin: 5px;
+}
+
+.login {
+    border: 1px solid var(--primary-color);
+    background-color: var(--light-accent);
+    border-radius: 15px;
+    padding: 1px 5px;
+}
+
+.login:hover {
+    background-color: var(--primary-color);
+}
+
