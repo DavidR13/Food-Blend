@@ -12,6 +12,7 @@
     color: var(--black);
 }
 
+/* ===== Navigation Menu Styling ===== */
 .navbar {
     padding-left: 1vw !important;
 }
@@ -36,3 +37,54 @@
     background-color: var(--primary-color);
 }
 
+/* ===== Footer Styling ===== */
+.footer-text {
+    color: var(--dark-accent);
+}
+
+.text-start {
+    line-height: 2rem;
+}
+
+.list-unstyled li {
+    padding-bottom: 10px;
+}
+
+.list-unstyled li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.footer-name a {
+    text-decoration: none;
+    color: var(--dark-accent);
+}
+
+/* ======== MOBILE RESPONSIVENESS STYLING ======== */
+
+
+/* ===== Home Page Styling ===== */
+header {
+    background: linear-gradient(rgba(128, 237, 153, 0.10), rgba(87, 204, 153, 0.15)), url('../images/header_bg.jpg') center;
+    height: 90vh;
+    background-size: cover;
+}
+
+header.container.row {
+    width: 80%;
+}
+
+.header-info {
+    padding: 30vh 0;
+}
+
+.heading-title {
+    font-size: 72px;
+    color: var(--dark-accent);
+}
+
+.subheading {
+    font-size: 20px;
+    font-weight: 500;
+}
