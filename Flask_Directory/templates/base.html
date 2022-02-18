@@ -19,7 +19,7 @@
     </title>
 </head>
 <body>
-    <!-- navigation menu -->
+    <!-- Navigation menu -->
     <div class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a href="{{ url_for('index') }}" class="navbar-brand">
@@ -64,14 +64,14 @@
         </div>
     </div>
 
-    <!-- page content -->
+    <!-- Page content -->
     {% block content %}
 
     {% endblock %}
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer class="pt-4">
-        <div class="container text-center">
+        <div class="container">
         <div class="row">
           <div class="col-md-6">
             <h5 class="text-uppercase footer-text">Food Blend</h5>
@@ -80,49 +80,49 @@
             people to find inspiration either directly through recipe searching or through the ideas that
             others share.</p>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-3">
             <h5 class="text-uppercase link-text">Quick Links</h5>
             <ul class="list-unstyled">
               <li>
-                <a href="#!">Home</a>
+                <a href="#">Home</a>
               </li>
               <li>
-                <a href="#!">Find Recipes</a>
+                <a href="#">Find Recipes</a>
               </li>
               <li>
-                <a href="#!">Login/Register</a>
+                <a href="#">Login</a>
               </li>
             </ul>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-3">
             <h5 class="text-uppercase link-text">Communities</h5>
             <ul class="list-unstyled">
               <li>
-                <a href="#!">Breakfast</a>
+                <a href="#">Breakfast</a>
               </li>
               <li>
-                <a href="#!">Lunch</a>
+                <a href="#">Lunch</a>
               </li>
               <li>
-                <a href="#!">Dinner</a>
+                <a href="#">Dinner</a>
               </li>
               <li>
-                <a href="#!">Snacks & Appetizers</a>
+                <a href="#">Snacks & Appetizers</a>
               </li>
                 <li>
-                <a href="#!">Desserts</a>
+                <a href="#">Desserts</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer-name text-center py-3">© 2022
+      <div class="footer-name text-center pb-3">© 2022
         <a href="{{ url_for('index') }}"> Food Blend</a>
       </div>
 
     </footer>
 
-    <!-- script tags -->
+    <!-- Script tags -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

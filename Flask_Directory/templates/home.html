@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Header section -->
     <header>
         <div class="container">
             <div class="row">
@@ -18,5 +19,31 @@
             </div>
         </div>
     </header>
+
+    <!-- Random Recipes section -->
+    <section class="p-5 random-recipes">
+        <div class="container">
+            <div class="random-recipes-title pb-4 text-center">
+                <h1>Some Recipe Ideas For You</h1>
+                <p><strong>P.S.</strong> Keep refreshing your page to see new options!</p>
+            </div>
+            <div class="row row-cols-md-2 row-cols-lg-4 row-cols-sm-6">
+                {% for recipe in recipes %}
+                <div class="col-12 pb-5">
+                    <div class="card h-100">
+                        <img src="{{ recipe[2] }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ recipe[0] }}</h4>
+                            <p class="card-text">Cook Time: {{ recipe[3] }}</p>
+                            <p class="card-text">Servings: {{ recipe[4] }}</p>
+                            <a href="{{ recipe[1] }}" class="btn btn-primary align-center">More Info</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
 
 {% endblock %}
