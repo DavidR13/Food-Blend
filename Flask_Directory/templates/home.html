@@ -25,7 +25,7 @@
         <div class="container">
             <div class="random-recipes-title pb-4 text-center">
                 <h1>Some Recipe Ideas For You</h1>
-                <p><strong>P.S.</strong> Keep refreshing your page to see new options!</p>
+                <p><strong>P.S.</strong> Keep refreshing the page to see new options!</p>
             </div>
             <div class="row row-cols-md-2 row-cols-lg-4 row-cols-sm-6">
                 {% for recipe in recipes %}
@@ -36,14 +36,29 @@
                             <h4 class="card-title">{{ recipe[0] }}</h4>
                             <p class="card-text">Cook Time: {{ recipe[3] }}</p>
                             <p class="card-text">Servings: {{ recipe[4] }}</p>
-                            <a href="{{ recipe[1] }}" class="btn btn-primary align-center">More Info</a>
+                            <a href="{{ recipe[1] }}" class="btn btn-primary mt-auto">More Details</a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
+    </section>
 
+    <!-- Details section -->
+    <section class="register">
+        <div class="container-fluid">
+            <div class="row register-row">
+                <div class="col-md-6 left-img"></div>
+                <div class="col-md-6 right-text my-auto">
+                    <h2>What Food Blend Offers</h2>
+                    <p>If you love food, we're certain you love sharing what you cooked or ate on social media or
+                    with friends and family. Food Blend packages food and community into one, giving you the chance
+                    to find new inspirations while sharing what you have made with the world!</p>
+                    <a href="#" class="btn btn-primary">Find Recipes</a>
+                </div>
+            </div>
+        </div>
     </section>
 
 {% endblock %}

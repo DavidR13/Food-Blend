@@ -38,6 +38,10 @@
 }
 
 /* ===== Footer Styling ===== */
+footer {
+    border-top: var(--secondary-color) 1px solid;
+}
+
 .footer-text {
     color: var(--dark-accent);
 }
@@ -62,12 +66,20 @@
 }
 
 /* ======== MOBILE RESPONSIVENESS STYLING ======== */
+@media screen and (max-width: 768px) {
+    .heading-title {
+        font-size: 48px !important;
+    }
 
+    .left-img {
+        display: none;
+    }
+}
 
 /* ===== Home Page Styling ===== */
 header {
-    background: linear-gradient(rgba(128, 237, 153, 0.10), rgba(87, 204, 153, 0.15)), url('../images/header_bg.jpg') center;
-    height: 90vh;
+    background: linear-gradient(rgba(151, 208, 164, 0.25), rgba(108, 166, 140, 0.25)), url('../images/header_bg.jpg') center;
+    height: 80vh;
     background-size: cover;
 }
 
@@ -93,6 +105,11 @@ header.container.row {
     border: 1px solid var(--primary-color) !important;
 }
 
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
 .btn-primary {
     background-color: var(--secondary-color) !important;
     border-color: var(--secondary-color) !important;
@@ -100,4 +117,36 @@ header.container.row {
 
 .btn-primary:hover {
     background-color: var(--primary-color) !important;
+}
+
+.register {
+    background-color: var(--dark-accent);
+}
+
+.register-row .left-img {
+    background: url("../images/register_section_img.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.container-fluid .row {
+    height: 60vh;
+}
+
+.right-text h2 {
+    color: var(--primary-color);
+}
+
+.right-text p {
+    color: var(--white);
+    line-height: 2rem;
+}
+
+/* ===== Find Recipes Page Styling ===== */
+form {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.form-field {
+    padding-bottom: 5%;
 }

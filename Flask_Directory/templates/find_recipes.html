@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}
+    Food Blend | Find Recipes
+{% endblock %}
+
+{% block content %}
+    <section class="find-recipes p-5">
+        <div class="container">
+            <form class="form text-center col-lg-6" method="post" role="form">
+                {{ form.hidden_tag() }}
+
+                <div class="form-field form-search">
+                    {{ wtf.form_field(form.search) }}
+                </div>
+                <div class="form-field form-diet">
+                    {{ wtf.form_field(form.diet) }}
+                </div>
+                <div class="form-field form-submit">
+                    {{ wtf.form_field(form.submit,  button_map={"submit": "primary"}) }}
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
