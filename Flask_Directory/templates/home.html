@@ -25,9 +25,9 @@
         <div class="container">
             <div class="random-recipes-title pb-4 text-center">
                 <h1>Some Recipe Ideas For You</h1>
-                <p><strong>P.S.</strong> Keep refreshing the page to see new options!</p>
+                <p><strong>P.S.</strong> Keep refreshing the page to see new options (max 150 API calls per day)</p>
             </div>
-            <div class="row row-cols-md-2 row-cols-lg-4 row-cols-sm-6">
+            <div class="row row-cols-md-2 row-cols-lg-3 row-cols-sm-12">
                 {% for recipe in recipes %}
                 <div class="col-12 pb-5">
                     <div class="card h-100">
@@ -36,7 +36,7 @@
                             <h4 class="card-title">{{ recipe[0] }}</h4>
                             <p class="card-text">Cook Time: {{ recipe[3] }}</p>
                             <p class="card-text">Servings: {{ recipe[4] }}</p>
-                            <a href="{{ recipe[1] }}" class="btn btn-primary mt-auto">More Details</a>
+                            <a href="{{ recipe[1] }}" class="btn btn-primary mt-auto" target="_blank">More Details</a>
                         </div>
                     </div>
                 </div>

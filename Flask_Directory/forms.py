@@ -6,12 +6,12 @@ from flask_ckeditor import CKEditor, CKEditorField
 class FindRecipes(FlaskForm):
     search = StringField("What are you looking for?", validators=[DataRequired()])
     diet = SelectField("Choose your diet (or leave blank):", choices=[
-        '',
-        'Gluten Free',
-        'Ketogenic',
-        'Vegetarian',
-        'Lacto-Vegetarian',
-        'Vegan',
-        'Pescetarian',
+        ('', ''),
+        ('gluten free', 'Gluten Free'),
+        ('ketogenic', 'Ketogenic'),
+        ('vegetarian', 'Vegetarian'),
+        ('lacto-vegetarian', 'Lacto-Vegetarian'),
+        ('vegan', 'Vegan'),
+        ('pescetarian', 'Pescetarian'),
     ], default='')
     submit = SubmitField("Submit")

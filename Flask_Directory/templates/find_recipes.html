@@ -22,5 +22,28 @@
                 </div>
             </form>
         </div>
+
+        {% if recipes %}
+        <div class="container">
+            <div class="recipes-title pb-4 text-center">
+                <h1 style="text-transform: capitalize">{{ searched_recipe }}</h1>
+            </div>
+            <div class="row row-cols-md-2 row-cols-lg-4 row-cols-sm-12">
+                {% for recipe in recipes %}
+                <div class="col-12 pb-5">
+                    <div class="card h-100">
+                        <img src="{{ recipe[4] }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ recipe[0] }}</h4>
+                            <p class="card-text">Cook Time: {{ recipe[1] }}</p>
+                            <p class="card-text">Servings: {{ recipe[2] }}</p>
+                            <a href="{{ recipe[3] }}" class="btn btn-primary mt-auto" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
     </section>
 {% endblock %}
