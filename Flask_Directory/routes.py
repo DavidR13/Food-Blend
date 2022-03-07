@@ -1,5 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash, abort
 from Flask_Directory import app, api_functions, forms, linked_list
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask_login import login_user, logout_user, login_required
 import os
 from datetime import date
 
@@ -37,6 +39,7 @@ def get_recipes():
 
         response = api_functions.get_recipes(search_recipe, search_diet)
 
+        # if max daily API calls is reached
         if response is None:
             return render_template("find_recipes.html", form=form)
 
@@ -50,3 +53,19 @@ def get_recipes():
 
         return render_template("find_recipes.html", form=form, recipes=all_recipes_list, searched_recipe=search_recipe)
     return render_template("find_recipes.html", form=form, recipes=all_recipes_list)
+
+
+@app.route('/community/<string:name>')
+def communities(name):
+    print(name)
+    return render_template("communities.html", name=name)
+
+
+@app.route('/register')
+def register():
+    pass
+
+
+@app.route('/login')
+def login():
+    pass

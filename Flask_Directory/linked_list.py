@@ -1,3 +1,7 @@
+''' Using Linked List to store the recipes since sometimes
+many recipes can pop up from the search (O(1) insertion) '''
+
+
 class Node:
     def __init__(self, value):
         self.value = value

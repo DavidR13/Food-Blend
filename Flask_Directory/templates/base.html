@@ -40,19 +40,19 @@
                       </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="#">Breakfast</a>
+                                <a class="dropdown-item" href="{{ url_for('communities', name='breakfast') }}">Breakfast</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Lunch</a>
+                                <a class="dropdown-item" href="{{ url_for('communities', name='lunch') }}">Lunch</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Dinner</a>
+                                <a class="dropdown-item" href="{{ url_for('communities', name='dinner') }}">Dinner</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Snacks & Appetizers</a>
+                                <a class="dropdown-item" href="{{ url_for('communities', name='snacks & appetizers') }}">Snacks & Appetizers</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Desserts</a>
+                                <a class="dropdown-item" href="{{ url_for('communities', name='desserts') }}">Desserts</a>
                             </li>
                         </ul>
                     </li>
@@ -98,19 +98,19 @@
             <h5 class="text-uppercase link-text">Communities</h5>
             <ul class="list-unstyled">
               <li>
-                <a href="#">Breakfast</a>
+                <a href="{{ url_for('communities', name='breakfast') }}">Breakfast</a>
               </li>
               <li>
-                <a href="#">Lunch</a>
+                <a href="{{ url_for('communities', name='lunch') }}">Lunch</a>
               </li>
               <li>
-                <a href="#">Dinner</a>
+                <a href="{{ url_for('communities', name='dinner') }}">Dinner</a>
               </li>
               <li>
-                <a href="#">Snacks & Appetizers</a>
+                <a href="{{ url_for('communities', name='snacks & appetizers') }}">Snacks & Appetizers</a>
               </li>
                 <li>
-                <a href="#">Desserts</a>
+                <a href="{{ url_for('communities', name='desserts') }}">Desserts</a>
               </li>
             </ul>
           </div>
