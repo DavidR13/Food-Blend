@@ -150,3 +150,20 @@ form {
 .form-field {
     padding-bottom: 5%;
 }
+
+/* ===== Communities Pages Styling ===== */
+
+
+/* ===== Other Pages Styling ===== */
+.register-tag {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.register-tag:hover {
+    color: var(--dark-accent);
+}
+
+.login-title, .register-title {
+    color: var(--secondary-color);
+}
