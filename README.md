@@ -5,7 +5,7 @@
 * Bootstrap
 * Python
 * Flask (SQLAlchemy, Flask Login, Werkzeug Security, FlaskForm, CKEditor, Flask Bootstrap, Gravatar)
-* PostgreSQL
+* SQLite
 * Heroku
 * Spoonacular API
 
