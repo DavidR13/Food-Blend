@@ -37,6 +37,13 @@
     background-color: var(--primary-color);
 }
 
+.logout {
+    border: 1px solid #8f260e;
+    background-color: #e57560;
+    border-radius: 15px;
+    padding: 1px 5px;
+}
+
 /* ===== Footer Styling ===== */
 footer {
     border-top: var(--secondary-color) 1px solid;
@@ -63,6 +70,10 @@ footer {
 .footer-name a {
     text-decoration: none;
     color: var(--dark-accent);
+}
+
+.logout-footer-text {
+    color: #ee6f57 !important;
 }
 
 /* ======== MOBILE RESPONSIVENESS STYLING ======== */

@@ -56,9 +56,15 @@
                             </li>
                         </ul>
                     </li>
+                    {% if not current_user.is_authenticated %}
                     <li class="nav-item login">
-                        <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                        <a href="{{ url_for('login') }}" class="nav-link a-login">Login</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item logout">
+                        <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -89,9 +95,15 @@
               <li>
                 <a href="{{ url_for('get_recipes') }}">Find Recipes</a>
               </li>
+              {% if not current_user.is_authenticated %}
               <li>
-                <a href="#">Login</a>
+                  <a href="{{ url_for('login') }}">Login</a>
               </li>
+              {% else %}
+              <li>
+                  <a href="{{ url_for('logout') }}" class="logout-footer-text">Logout</a>
+              </li>
+              {% endif %}
             </ul>
           </div>
           <div class="col-md-3">

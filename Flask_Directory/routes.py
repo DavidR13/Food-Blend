@@ -1,5 +1,8 @@
 from flask import render_template, request, redirect, url_for, flash, abort
-from Flask_Directory import app, api_functions, forms, linked_list
+from Flask_Directory import app, api_functions, linked_list
+from .forms import FindRecipes, Register, Login
+from .models import *
+from . import db
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
 import os
@@ -29,7 +32,7 @@ def index():
 
 @app.route('/find-recipes', methods=['GET', 'POST'])
 def get_recipes():
-    form = forms.FindRecipes()
+    form = FindRecipes()
     all_recipes = linked_list.LinkedList()
     all_recipes_list = []
 
@@ -52,13 +55,13 @@ def get_recipes():
         all_recipes_list = all_recipes.to_list()  # convert all linked list values into a regular list
 
         return render_template("find_recipes.html", form=form, recipes=all_recipes_list, searched_recipe=search_recipe)
-    return render_template("find_recipes.html", form=form, recipes=all_recipes_list)
+    return render_template("find_recipes.html", form=form, recipes=all_recipes_list, user=current_user)
 
 
 @app.route('/community/<string:name>')
 def communities(name):
     print(name)
-    return render_template("communities.html", name=name)
+    return render_template("communities.html", name=name, user=current_user)
 
 
 @app.route('/community-post/<string:name>/<int:id>/<string:title>')
@@ -86,7 +89,7 @@ def delete_post(post_id):
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = forms.Register()
+    form = Register()
 
     if request.method == 'POST':
         full_name = form.full_name.data
@@ -94,20 +97,46 @@ def register():
         email = form.email.data
         password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
 
-    return render_template('register.html', form=form)
+        user_exists = User.query.filter_by(email=email).first()
+
+        if user_exists:
+            flash('An account already exists with this email!', category='error')
+            return redirect(url_for('login'))
+        else:
+            new_user = User(
+                email=email,
+                password=password,
+                name=full_name,
+                username=username
+            )
+
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+        return redirect(url_for('index'))
+    return render_template('register.html', form=form, user=current_user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = forms.Login()
+    form = Login()
 
     if request.method == 'POST':
         email = form.email.data
         password = form.password.data
 
-        # need to get user from db, check if it exists, check password hash, and login user if it all checks out
+        user = User.query.filter_by(email=email).first()
 
-    return render_template('login.html', form=form)
+        if user:
+            if check_password_hash(user.password, password):
+                login_user(user, remember=True)
+                return redirect(url_for('index'))
+            else:
+                flash('Wrong password, please try again.', category='error')
+        else:
+            flash('This user does not exist.', category='error')
+
+    return render_template('login.html', form=form, user=current_user)
 
 
 @app.route('/logout')

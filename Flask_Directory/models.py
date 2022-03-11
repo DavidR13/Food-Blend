@@ -33,8 +33,5 @@ class Comment(db.Model):
     text = db.Column(db.Text, nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comment_author = relationship('User', back_populates='comments')
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     post = relationship('Post', back_populates='comments')
-
-
-db.create_all()

@@ -9,6 +9,17 @@
     <section class="login-section p-5">
         <div class="container">
             <h2 class="text-center pb-3 login-title">Login</h2>
+            <p>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    <ul class=flashes>
+                    {% for category, message in messages %}
+                      <li class="{{ category }} text-center" style="list-style: none; color: #ee6f57;">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+            </p>
             <form class="form-login col-lg-6" method="post" role="form">
                 {{ form.hidden_tag() }}
 
