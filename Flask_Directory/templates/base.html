@@ -26,7 +26,7 @@
                 <img src="../static/images/food_blend_logo.png" alt="Food Blend">
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="nav-menu">
@@ -63,6 +63,12 @@
                     {% else %}
                     <li class="nav-item logout">
                         <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                    </li>
+                    {% endif %}
+
+                    {% if request.path.split('/')[1] == "community" and current_user.is_authenticated %}
+                    <li class="nav-item post">
+                        <a href="{{ url_for('post', community_name=name) }}" class="nav-link">Post</a>
                     </li>
                     {% endif %}
                 </ul>

@@ -14,7 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food_blend.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-from .models import User
+from .models import *
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -25,4 +25,4 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-from Flask_Directory import routes, models
+from Flask_Directory import routes

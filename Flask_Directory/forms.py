@@ -15,7 +15,7 @@ class FindRecipes(FlaskForm):
         ('vegan', 'Vegan'),
         ('pescetarian', 'Pescetarian'),
     ], default='')
-    submit = SubmitField("Submit")
+    submit = SubmitField("Search")
 
 
 class Register(FlaskForm):
@@ -30,3 +30,14 @@ class Login(FlaskForm):
     email = StringField("Email", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField("Login")
+
+
+class CommunityPost(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    content = CKEditorField("Post Content", validators=[DataRequired()])
+    submit = SubmitField("Post")
+
+
+class PostComment(FlaskForm):
+    content = CKEditorField("Comment Content", validators=[DataRequired()])
+    submit = SubmitField("Comment")

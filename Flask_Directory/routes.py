@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash, abort
 from Flask_Directory import app, api_functions, linked_list
-from .forms import FindRecipes, Register, Login
+from .forms import FindRecipes, Register, Login, CommunityPost, PostComment
 from .models import *
 from . import db
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -60,7 +60,6 @@ def get_recipes():
 
 @app.route('/community/<string:name>')
 def communities(name):
-    print(name)
     return render_template("communities.html", name=name, user=current_user)
 
 
@@ -69,22 +68,41 @@ def show_individual_post(name, id, title):
     pass
 
 
-@app.route('/create-post', methods=['GET', 'POST'])
+@app.route('/create-post/<string:community_name>', methods=['GET', 'POST'])
 @login_required
-def post():
-    pass
+def post(community_name):
+    form = CommunityPost()
+
+    if request.method == 'POST':
+        title = form.title.data
+        content = form.content.data
+        today = date.today()
+
+        new_post = Post(
+            title=title,
+            date=today.strftime("%B %d, %Y"),
+            body=content,
+            community_name=community_name
+        )
+
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect(f'/community/{community_name}')
+    return render_template('post.html', form=form)
 
 
 @app.route('/edit-post/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(post_id):
-    pass
+    form = CommunityPost()
+
+    return render_template('post.html', form=form)
 
 
 @app.route('/delete-post/<int:post_id>', methods=['GET', 'POST', 'DELETE'])
 @login_required
 def delete_post(post_id):
-    pass
+    return redirect(url_for('communities'))
 
 
 @app.route('/register', methods=['GET', 'POST'])

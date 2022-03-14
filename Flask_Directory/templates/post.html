@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}
+    Food Blend | Create/Edit Post
+{% endblock %}
+
+{% block content %}
+    <section class="post-section p-5">
+        <div class="container">
+            <form class="form-post text-center col-lg-6" method="post" role="form">
+                {{ form.hidden_tag() }}
+
+                <div class="form-field form-title">
+                    {{ wtf.form_field(form.title) }}
+                </div>
+                <div class="form-field form-content">
+                    {{ ckeditor.load() }}
+                    {{ ckeditor.config(name='content') }}
+                    {{ wtf.form_field(form.content) }}
+                </div>
+                <div class="form-field form-submit">
+                    {{ wtf.form_field(form.submit,  button_map={"submit": "primary"}) }}
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
