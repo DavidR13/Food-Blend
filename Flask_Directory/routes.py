@@ -60,12 +60,16 @@ def get_recipes():
 
 @app.route('/community/<string:name>')
 def communities(name):
-    return render_template("communities.html", name=name, user=current_user)
+    posts = Post.query.filter_by(community=name).all()
+
+    return render_template("communities.html", name=name, user=current_user, posts=posts)
 
 
 @app.route('/community-post/<string:name>/<int:id>/<string:title>')
 def show_individual_post(name, id, title):
-    pass
+    get_post = Post.query.filter_by(id=id).first()
+
+    return render_template('show_post.html', post=get_post)
 
 
 @app.route('/create-post/<string:community_name>', methods=['GET', 'POST'])
@@ -82,7 +86,7 @@ def post(community_name):
             title=title,
             date=today.strftime("%B %d, %Y"),
             body=content,
-            community_name=community_name
+            community=community_name
         )
 
         db.session.add(new_post)
@@ -162,3 +166,8 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route('/user-page/<string:user>')
+def show_user():
+    pass

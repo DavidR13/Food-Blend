@@ -166,7 +166,48 @@ form {
 }
 
 /* ===== Communities Pages Styling ===== */
+.post-title-tag {
+    text-decoration: none;
+    color: var(--dark-accent);
+}
 
+.post-title-tag:hover {
+    color: var(--secondary-color);
+}
+
+.post-info {
+    color: #706969;
+}
+
+.post-author {
+    color: var(--secondary-color);
+}
+
+.post-username {
+    color: var(--primary-color) !important;
+}
+
+.post-author:hover, .post-username:hover {
+    color: var(--dark-accent);
+}
+
+.post-date {
+    color: #605c5c;
+    font-weight: bold;
+}
+
+.post-snippet {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.post-view {
+    border: 1px solid #595858;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
 
 /* ===== Other Pages Styling ===== */
 .register-tag {
