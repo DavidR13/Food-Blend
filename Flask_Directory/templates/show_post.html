@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %}
     Food Blend | {{ post.title }}
@@ -7,7 +8,7 @@
 {% block content %}
     <section class="individual-post p-5">
         <div class="container">
-            <h2 class="post-title">{{ post.title }}</h2>
+            <h1 class="post-title">{{ post.title }}</h1>
             <p class="post-info">Posted by <a href="" class="post-author">{{ post.author.name }}</a></p>
             <div class="inline-actions justify-content-between d-flex">
                 <span class="post-date">{{ post.date }}</span>
@@ -29,5 +30,29 @@
             <hr>
             <p>{{ post.body|safe }}</p>
         </div>
+
+        <div class="container add-comment mb-4">
+            <a onclick="toggleDisplay()" class="add-comment-tag" id="toggle-form">Click to add a comment...</a>
+
+            <form class="form-comment text-center col-lg-6" id="form-post-comment" method="post" role="form" style="display: none;">
+                {{ form.hidden_tag() }}
+
+                <div class="form-field form-comment-content">
+                    {{ ckeditor.load() }}
+                    {{ ckeditor.config(name='comment_content') }}
+                    {{ wtf.form_field(form.comment_content) }}
+                </div>
+                <div class="form-field form-submit">
+                    {{ wtf.form_field(form.submit,  button_map={"submit": "primary"}) }}
+                </div>
+            </form>
+        </div>
+
+        {% for comment in comments %}
+        <div class="container show-comments">
+            <p class="comment-user">{{ comment.author.name }}</p>
+            <p class="comment-info">{{ comment.text|safe }}</p>
+        </div>
+        {% endfor %}
     </section>
 {% endblock %}

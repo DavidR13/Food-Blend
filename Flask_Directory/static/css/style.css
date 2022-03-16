@@ -202,12 +202,7 @@ form {
     text-decoration: none;
 }
 
-.post-username {
-    color: var(--primary-color) !important;
-    font-size: 14px;
-}
-
-.post-author:hover, .post-username:hover {
+.post-author:hover {
     color: var(--dark-accent);
 }
 
@@ -235,6 +230,38 @@ form {
 
 #post-actions {
     background-color: var(--primary-color) !important;
+}
+
+.add-comment {
+    padding: 5px 0px;
+    border-top: 1px solid var(--dark-accent);
+    border-bottom: 1px solid var(--dark-accent);
+}
+
+.add-comment-tag {
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.add-comment-tag:hover {
+    color: var(--primary-color);
+}
+
+.comments-title h4 {
+    color: var(--dark-accent);
+    text-decoration: underline;
+}
+
+.show-comments {
+    border-bottom: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.comment-user {
+    font-size: 18px;
+    font-weight: 600;
+    color: #25776c;
 }
 
 /* ===== Other Pages Styling ===== */

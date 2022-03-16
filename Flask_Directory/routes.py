@@ -65,11 +65,23 @@ def communities(name):
     return render_template("communities.html", name=name, user=current_user, posts=posts)
 
 
-@app.route('/community-post/<string:name>/<int:id>/<string:title>')
+@app.route('/community-post/<string:name>/<int:id>/<string:title>', methods=['GET', 'POST'])
 def show_individual_post(name, id, title):
     get_post = Post.query.filter_by(id=id).first()
+    get_comments = Comment.query.filter_by(post_id=get_post.id).all()
+    form = PostComment()
 
-    return render_template('show_post.html', post=get_post, user=current_user)
+    if request.method == 'POST':
+        comment_content = form.comment_content.data
+        new_comment = Comment(
+            text=comment_content,
+            author_id=current_user.id,
+            post_id=get_post.id
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(url_for('show_individual_post', name=name, id=id, title=title))
+    return render_template('show_post.html', post=get_post, user=current_user, form=form, comments=get_comments)
 
 
 @app.route('/create-post/<string:community_name>', methods=['GET', 'POST'])
