@@ -69,7 +69,7 @@ def communities(name):
 def show_individual_post(name, id, title):
     get_post = Post.query.filter_by(id=id).first()
 
-    return render_template('show_post.html', post=get_post)
+    return render_template('show_post.html', post=get_post, user=current_user)
 
 
 @app.route('/create-post/<string:community_name>', methods=['GET', 'POST'])
@@ -79,7 +79,7 @@ def post(community_name):
 
     if request.method == 'POST':
         title = form.title.data
-        content = form.content.data
+        content = form.post_content.data
         today = date.today()
 
         new_post = Post(
@@ -91,21 +91,38 @@ def post(community_name):
 
         db.session.add(new_post)
         db.session.commit()
-        return redirect(f'/community/{community_name}')
-    return render_template('post.html', form=form)
+        return redirect(url_for('communities', name=community_name))
+    return render_template('post.html', form=form, user=current_user)
 
 
 @app.route('/edit-post/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(post_id):
-    form = CommunityPost()
+    get_post = Post.query.get(post_id)
+    post_to_edit = CommunityPost(
+        title=get_post.title,
+        post_content=get_post.body
+    )
 
-    return render_template('post.html', form=form)
+    if request.method == 'POST':
+        get_post.title = post_to_edit.title.data
+        get_post.body = post_to_edit.post_content.data
+
+        db.session.commit()
+        return redirect(url_for('show_individual_post', name=get_post.community, id=get_post.id, title=get_post.title))
+
+    return render_template('post.html', form=post_to_edit, user=current_user)
 
 
 @app.route('/delete-post/<int:post_id>', methods=['GET', 'POST', 'DELETE'])
 @login_required
 def delete_post(post_id):
+    post_to_delete = Post.query.get(post_id)
+
+    if post_to_delete:
+        db.session.delete(post_to_delete)
+        db.session.commit()
+
     return redirect(url_for('communities'))
 
 

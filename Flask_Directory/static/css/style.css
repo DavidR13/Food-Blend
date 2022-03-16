@@ -2,7 +2,7 @@
     --primary-color: #57CC99;
     --secondary-color: #38A3A5;
     --light-accent: #80ED99;
-    --dark-accent: #22577A;
+    --dark-accent: #205272;
     --white: #F5F7F6;
     --black: #303B3D;
 }
@@ -50,14 +50,16 @@
 /* ===== Footer Styling ===== */
 footer {
     border-top: var(--secondary-color) 1px solid;
+    background-color: #112d3f;
 }
 
 .footer-text {
-    color: var(--dark-accent);
+    color: var(--primary-color);
 }
 
 .text-start {
     line-height: 2rem;
+    color: var(--white);
 }
 
 .list-unstyled li {
@@ -66,17 +68,29 @@ footer {
 
 .list-unstyled li a {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--light-accent);
     font-size: 16px;
+}
+
+.footer-name {
+    color: var(--white);
 }
 
 .footer-name a {
     text-decoration: none;
-    color: var(--dark-accent);
+    color: var(--light-accent);
+}
+
+.footer-name a:hover {
+    color: var(--light-accent);
 }
 
 .logout-footer-text {
     color: #ee6f57 !important;
+}
+
+.link-text {
+    color: var(--white);
 }
 
 /* ======== MOBILE RESPONSIVENESS STYLING ======== */
@@ -165,7 +179,7 @@ form {
     padding-bottom: 5%;
 }
 
-/* ===== Communities Pages Styling ===== */
+/* ===== Communities and Posts Pages Styling ===== */
 .post-title-tag {
     text-decoration: none;
     color: var(--dark-accent);
@@ -175,8 +189,12 @@ form {
     color: var(--secondary-color);
 }
 
+.post-title {
+    color: var(--secondary-color);
+}
+
 .post-info {
-    color: #706969;
+    color: #5d5757;
 }
 
 .post-author {
@@ -207,6 +225,14 @@ form {
     border: 1px solid #595858;
     border-radius: 5px;
     padding: 10px 15px;
+}
+
+.inline-actions {
+    display: inline-block;
+}
+
+#post-actions {
+    background-color: var(--primary-color) !important;
 }
 
 /* ===== Other Pages Styling ===== */

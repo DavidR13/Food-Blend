@@ -3,17 +3,6 @@ from sqlalchemy.orm import relationship
 from . import db
 
 
-class User(db.Model, UserMixin):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(250), unique=True, nullable=False)
-    password = db.Column(db.String(250), nullable=False)
-    name = db.Column(db.String(250), nullable=False)
-    username = db.Column(db.String(250), nullable=False, unique=True)
-    posts = relationship('Post', back_populates='author')
-    comments = relationship('Comment', back_populates='comment_author')
-
-
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
@@ -34,3 +23,14 @@ class Comment(db.Model):
     comment_author = relationship('User', back_populates='comments')
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     post = relationship('Post', back_populates='comments')
+
+
+class User(db.Model, UserMixin):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(250), unique=True, nullable=False)
+    password = db.Column(db.String(250), nullable=False)
+    name = db.Column(db.String(250), nullable=False)
+    username = db.Column(db.String(250), nullable=False, unique=True)
+    posts = relationship('Post', back_populates='author')
+    comments = relationship('Comment', back_populates='comment_author')

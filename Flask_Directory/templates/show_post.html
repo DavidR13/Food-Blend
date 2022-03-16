@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Food Blend | {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <section class="individual-post p-5">
+        <div class="container">
+            <h2 class="post-title">{{ post.title }}</h2>
+            <p class="post-info">Posted by <a href="" class="post-author">{{ post.author.name }}</a></p>
+            <div class="inline-actions justify-content-between d-flex">
+                <span class="post-date">{{ post.date }}</span>
+                {% if user.id == post.author_id %}
+                <div class="post-actions btn-group col-sm-1">
+                    <button id="post-actions" type="button" class="btn btn-sm btn-outline-primary dropdown-toggle"
+                        data-bs-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ url_for('edit_post', post_id=post.id) }}" class="dropdown-item">Edit Post</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('delete_post', post_id=post.id) }}" class="dropdown-item">Delete Post</a>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <hr>
+            <p>{{ post.body|safe }}</p>
+        </div>
+    </section>
+{% endblock %}

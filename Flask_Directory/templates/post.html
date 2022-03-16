@@ -16,8 +16,8 @@
                 </div>
                 <div class="form-field form-content">
                     {{ ckeditor.load() }}
-                    {{ ckeditor.config(name='content') }}
-                    {{ wtf.form_field(form.content) }}
+                    {{ ckeditor.config(name='post_content') }}
+                    {{ wtf.form_field(form.post_content) }}
                 </div>
                 <div class="form-field form-submit">
                     {{ wtf.form_field(form.submit,  button_map={"submit": "primary"}) }}

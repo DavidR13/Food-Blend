@@ -34,10 +34,10 @@ class Login(FlaskForm):
 
 class CommunityPost(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
-    content = CKEditorField("Post Content", validators=[DataRequired()])
+    post_content = CKEditorField("Post Content", validators=[DataRequired()])
     submit = SubmitField("Post")
 
 
 class PostComment(FlaskForm):
-    content = CKEditorField("Comment Content", validators=[DataRequired()])
+    comment_content = CKEditorField("Comment Content", validators=[DataRequired()])
     submit = SubmitField("Comment")
