@@ -199,10 +199,12 @@ form {
 
 .post-author {
     color: var(--secondary-color);
+    text-decoration: none;
 }
 
 .post-username {
     color: var(--primary-color) !important;
+    font-size: 14px;
 }
 
 .post-author:hover, .post-username:hover {

@@ -86,7 +86,8 @@ def post(community_name):
             title=title,
             date=today.strftime("%B %d, %Y"),
             body=content,
-            community=community_name
+            community=community_name,
+            author_id=current_user.id
         )
 
         db.session.add(new_post)
