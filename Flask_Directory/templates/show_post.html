@@ -9,7 +9,7 @@
     <section class="individual-post p-5">
         <div class="container">
             <h1 class="post-title">{{ post.title }}</h1>
-            <p class="post-info">Posted by <a href="" class="post-author">{{ post.author.name }}</a></p>
+            <p class="post-info">Posted by <a href="{{ url_for('show_user', user=post.author.username) }}" class="post-author">{{ post.author.name }}</a></p>
             <div class="inline-actions justify-content-between d-flex">
                 <span class="post-date">{{ post.date }}</span>
                 {% if user.id == post.author_id %}
@@ -50,7 +50,7 @@
 
         {% for comment in comments %}
         <div class="container show-comments">
-            <p class="comment-user">{{ comment.author.name }}</p>
+            <img src="{{ comment.author.email | gravatar }}" class="profile-picture"> <span class="comment-user">{{ comment.author.name }}</span>
             <p class="comment-info">{{ comment.text|safe }}</p>
         </div>
         {% endfor %}

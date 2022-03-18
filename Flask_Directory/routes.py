@@ -1,5 +1,5 @@
-from flask import render_template, request, redirect, url_for, flash, abort
-from Flask_Directory import app, api_functions, linked_list
+from flask import render_template, request, redirect, url_for, flash
+from Flask_Directory import app, api_functions, linked_list, gravatar
 from .forms import FindRecipes, Register, Login, CommunityPost, PostComment
 from .models import *
 from . import db
@@ -81,7 +81,7 @@ def show_individual_post(name, id, title):
         db.session.add(new_comment)
         db.session.commit()
         return redirect(url_for('show_individual_post', name=name, id=id, title=title))
-    return render_template('show_post.html', post=get_post, user=current_user, form=form, comments=get_comments)
+    return render_template('show_post.html', post=get_post, user=current_user, form=form, comments=get_comments, gravatar=gravatar)
 
 
 @app.route('/create-post/<string:community_name>', methods=['GET', 'POST'])
@@ -199,5 +199,8 @@ def logout():
 
 
 @app.route('/user-page/<string:user>')
-def show_user():
-    pass
+def show_user(user):
+    get_user = User.query.filter_by(username=user).first()
+    posts = Post.query.filter_by(author_id=get_user.id).all()
+
+    return render_template('user_page.html', user=get_user, posts=posts)

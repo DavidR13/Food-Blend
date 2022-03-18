@@ -19,7 +19,7 @@
                         </h2>
                         <p class="post-snippet">{{ post.body|safe }}</p>
                         <p class="post-info">
-                            Posted by <a href="" class="post-author">{{ post.author.name }}</a>
+                            Posted by <a href="{{ url_for('show_user', user=post.author.username) }}" class="post-author">{{ post.author.name }}</a>
                             on <span class="post-date">{{ post.date }}</span>
                         </p>
                     </div>
