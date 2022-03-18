@@ -50,7 +50,7 @@
 
         {% for comment in comments %}
         <div class="container show-comments">
-            <img src="{{ comment.author.email | gravatar }}" class="profile-picture"> <span class="comment-user">{{ comment.author.name }}</span>
+            <img src="{{ comment.author.email | gravatar }}" class="profile-picture"> <a class="comment-user" href="{{ url_for('show_user', user=comment.author.username) }}">{{ comment.author.name }}</a>
             <p class="comment-info">{{ comment.text|safe }}</p>
         </div>
         {% endfor %}

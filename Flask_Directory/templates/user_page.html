@@ -12,8 +12,8 @@
                     <img src="{{ user.email | gravatar }}" class="profile-picture">
                 </div>
                 <div class="user-info">
-                    <h3 >{{ user.name }}</h3>
-                    <p>{{ user.username }}</p>
+                    <h3>{{ user.name }}</h3>
+                    <p>@{{ user.username }}</p>
                 </div>
             </div>
             <hr>
@@ -22,12 +22,14 @@
             <div class="row">
                 {% for post in posts %}
                 <div class="col-md-4 col-sm-12 pb-4">
-                    <div class="card h-100" style="width: 22rem;">
+                    <div class="card h-100" style="width: 24rem;">
                       <div class="card-body">
                         <h4 class="card-title">{{ post.title }}</h4>
                           <h6 class="card-date">{{ post.date }}</h6>
-                        <p class="card-text">{{ post.body|safe }}</p>
-                        <a href="{{ url_for('show_individual_post', name=post.community, id=post.id, title=post.title) }}" class="card-link">
+                          <div class="card-text-body pb-2">
+                              <p class="card-text">{{ post.body|safe }}</p>
+                          </div>
+                        <a href="{{ url_for('show_individual_post', name=post.community, id=post.id, title=post.title) }}" class="card-link mt-auto">
                             View Post
                         </a>
                       </div>

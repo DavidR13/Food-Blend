@@ -273,6 +273,11 @@ form {
     font-weight: 600;
     color: #25776c;
     padding-left: 5px;
+    text-decoration: none;
+}
+
+.comment-user:hover {
+    color: var(--primary-color);
 }
 
 .profile-picture {
@@ -294,6 +299,14 @@ form {
 }
 
 /* ===== User Page Styling ===== */
+.user-info h3 {
+    color: var(--secondary-color);
+}
+
+.user-info p {
+    color: var(--dark-accent);
+}
+
 .card {
     border-color: var(--dark-accent) !important;
 }
@@ -315,11 +328,9 @@ form {
     color: var(--primary-color);
 }
 
-.card-text {
+.card-text-body {
     overflow: hidden;
-    -webkit-box-orient: vertical;
-    display: block;
     display: -webkit-box;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
