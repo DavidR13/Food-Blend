@@ -19,7 +19,7 @@ gravatar = Gravatar(app,
                     use_ssl=False,
                     base_url=None)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food_blend.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
