@@ -1,15 +1,12 @@
 import requests
 import os
-from Flask_Directory import json_functions
 
 
 def get_random_recipes():
     random_recipes_url = f"https://api.spoonacular.com/recipes/random?number=6&apiKey={os.environ['API_KEY']}"
 
     response = requests.get(url=random_recipes_url).json()
-    json_functions.save_to_file(response, "random_recipes_response.json")
-    results = json_functions.read_from_file("random_recipes_response.json")
-    return results
+    return response
 
 
 def get_recipes(query, diet):
@@ -17,6 +14,4 @@ def get_recipes(query, diet):
                   f"addRecipeInformation=true&apiKey={os.environ['API_KEY']}"
 
     response = requests.get(url=recipes_url).json()
-    json_functions.save_to_file(response, "recipes_response.json")
-    results = json_functions.read_from_file("recipes_response.json")
-    return results
+    return response

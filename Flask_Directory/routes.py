@@ -5,7 +5,6 @@ from .models import *
 from . import db
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
-import os
 from datetime import date
 
 
@@ -131,12 +130,13 @@ def edit_post(post_id):
 @login_required
 def delete_post(post_id):
     post_to_delete = Post.query.get(post_id)
+    community = post_to_delete.community
 
     if post_to_delete:
         db.session.delete(post_to_delete)
         db.session.commit()
 
-    return redirect(url_for('communities'))
+    return redirect(url_for('communities', name=community))
 
 
 @app.route('/register', methods=['GET', 'POST'])

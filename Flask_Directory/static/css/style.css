@@ -190,6 +190,11 @@ form {
 }
 
 /* ===== Communities and Posts Pages Styling ===== */
+.community-name {
+    color: var(--secondary-color);
+    margin-bottom: 5vh;
+}
+
 .post-title-tag {
     text-decoration: none;
     color: var(--dark-accent);
